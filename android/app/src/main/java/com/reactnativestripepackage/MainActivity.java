@@ -1,4 +1,4 @@
-package com.reactnativestripepackage;
+package com.rktlb.reactnativestripe;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;

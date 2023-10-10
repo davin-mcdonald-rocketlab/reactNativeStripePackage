@@ -1,4 +1,4 @@
-package com.reactnativestripepackage;
+package com.rktlb.reactnativestripe;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

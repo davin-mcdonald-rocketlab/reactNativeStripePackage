@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { View, StyleSheet, Text } from 'react-native'
-import Login from './components/LoginScreen'
-import HomeScreen from './components/HomeScreen'
-import BiometricsScreen from './components/BiometricsScreen'
-import jwtDecoder from './utils/jwtDecoder'
-import { LoginResponse, CurrentScreenProps, DecodedTokenProps } from './utils/types'
-import getBiometrics from './utils/biometrics'
-import dateToSeconds from './utils/dateToSeconds'
-import apiClient from './api/apiClient'
-import { getData, setData } from './utils/storage'
+import Login from '../components/LoginScreen'
+import HomeScreen from '../components/HomeScreen'
+import BiometricsScreen from '../components/BiometricsScreen'
+import jwtDecoder from '../utils/jwtDecoder'
+import { LoginResponse, CurrentScreenProps, DecodedTokenProps } from '../utils/types'
+import getBiometrics from '../utils/biometrics'
+import dateToSeconds from '../utils/dateToSeconds'
+import apiClient from '../api/apiClient'
+import { getData, setData } from '../utils/storage'
 
 const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState<string>('')

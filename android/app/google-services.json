@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "636047604723",
+    "project_id": "reactnativestripe-2013a",
+    "storage_bucket": "reactnativestripe-2013a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:636047604723:android:1a6230bd99941b17a53086",
+        "android_client_info": {
+          "package_name": "com.rktlb.reactnativestripe"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMKDosETpyqGZIBOCPzDjXIPf4EVKp9ZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,3 +1,5 @@
+import { NavigationProp, ParamListBase } from '@react-navigation/native'
+
 export interface LoginResponse {
   access_token: string
   refresh_token: string
@@ -27,4 +29,8 @@ export interface DecodedTokenProps {
     iat: number
     sub: number
   }
+}
+
+export type NavigationProps = {
+  navigation: NavigationProp<ParamListBase>
 }

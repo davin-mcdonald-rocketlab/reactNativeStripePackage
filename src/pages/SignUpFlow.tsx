@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import auth from '@react-native-firebase/auth'
 import SignUpForm from '../components/SignUpScreen'
-import { NavigationProp, ParamListBase } from '@react-navigation/native'
 import { Button } from 'react-native'
+import { NavigationProps } from '../utils/types'
 
-function SignUpFlow({ navigation }: SignUpFlowProps): JSX.Element {
+function SignUpFlow({ navigation }: NavigationProps): JSX.Element {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [isLoading, setIsLoading] = useState<boolean>(false)

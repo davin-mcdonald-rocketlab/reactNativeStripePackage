@@ -1,11 +1,9 @@
 import React, { FC } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import auth from '@react-native-firebase/auth'
+import { NavigationProps } from '../utils/types'
 
-const HomeScreen: FC<{
-  // setCurrent: Dispatch<SetStateAction<CurrentScreenProps>>
-  // setMessage: Dispatch<SetStateAction<string>>
-}> = ({ navigation }) => {
+const HomeScreen: FC<NavigationProps> = ({ navigation }) => {
   const handleLogout = () => {
     auth()
       .signOut()

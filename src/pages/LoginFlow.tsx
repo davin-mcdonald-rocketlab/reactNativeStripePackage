@@ -4,13 +4,18 @@ import Login from '../components/LoginScreen'
 import HomeScreen from '../components/HomeScreen'
 import BiometricsScreen from '../components/BiometricsScreen'
 import jwtDecoder from '../utils/jwtDecoder'
-import { LoginResponse, CurrentScreenProps, DecodedTokenProps } from '../utils/types'
+import {
+  LoginResponse,
+  CurrentScreenProps,
+  DecodedTokenProps,
+  NavigationProps,
+} from '../utils/types'
 import getBiometrics from '../utils/biometrics'
 import dateToSeconds from '../utils/dateToSeconds'
 import apiClient from '../api/apiClient'
 import { getData, setData } from '../utils/storage'
 
-function LoginScreen({ navigation }) {
+function LoginScreen({ navigation }: NavigationProps) {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [showPassword, setShowPassword] = useState(false)

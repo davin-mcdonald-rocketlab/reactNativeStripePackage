@@ -1,34 +1,28 @@
-import React, { useState } from 'react'
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native'
-import auth from '@react-native-firebase/auth'
+import React from 'react'
+import {
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Platform,
+  ActivityIndicator,
+} from 'react-native'
 
-const SignUpForm: React.FC = () => {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-
-  const handleSignUp = async () => {
-    try {
-      await auth()
-        .createUserWithEmailAndPassword(email, password)
-        .then((res) => {
-          console.log('User account created & signed in!', res)
-        })
-    } catch (error) {
-      if ((error as any).code === 'auth/email-already-in-use') {
-        console.log('That email address is already in use!')
-      }
-
-      if ((error as any).code === 'auth/invalid-email') {
-        console.log('That email address is invalid!')
-      }
-
-      console.error(error)
-    }
-  }
-
+const SignUpForm: React.FC<{
+  email: string
+  setEmail: (text: string) => void
+  password: string
+  setPassword: (text: string) => void
+  handleSignUp: () => void
+  isLoading: boolean
+}> = ({ email, setEmail, password, setPassword, handleSignUp, isLoading }) => {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Sign Up</Text>
+    <KeyboardAvoidingView
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+      style={styles.container}
+    >
+      <Text style={styles.text}>Sign Up</Text>
       <TextInput
         placeholder="Email"
         value={email}
@@ -42,8 +36,10 @@ const SignUpForm: React.FC = () => {
         onChangeText={(text) => setPassword(text)}
         style={styles.input}
       />
-      <Button title="Sign Up" onPress={handleSignUp} />
-    </View>
+      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+        {isLoading ? <ActivityIndicator /> : <Text style={styles.buttonText}>Sign Up</Text>}
+      </TouchableOpacity>
+    </KeyboardAvoidingView>
   )
 }
 
@@ -53,17 +49,31 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  title: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
   input: {
     width: '80%',
     height: 40,
-    borderColor: 'gray',
     borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    marginVertical: 10,
+    paddingHorizontal: 10,
+  },
+  button: {
+    backgroundColor: 'green',
+    width: '80%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  buttonText: {
+    color: 'white',
+    fontSize: 18,
+  },
+  text: {
+    fontSize: 24,
     marginBottom: 20,
-    padding: 10,
   },
 })
 

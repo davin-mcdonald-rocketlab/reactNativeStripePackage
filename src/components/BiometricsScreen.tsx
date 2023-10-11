@@ -1,23 +1,24 @@
-import React, { FC, Dispatch, SetStateAction } from 'react'
+import React, { FC } from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
-import { CurrentScreenProps } from '../utils/types'
 import getBiometrics from '../utils/biometrics'
 import { setData } from '../utils/storage'
 
 const BiometricsScreen: FC<{
-  setCurrent: Dispatch<SetStateAction<CurrentScreenProps>>
-}> = ({ setCurrent }) => {
+  // setCurrent: Dispatch<SetStateAction<CurrentScreenProps>>
+}> = ({ navigation }) => {
   const handleBiometrics = async () => {
     await setData('skipBiometrics', 'false')
     const biometrics = await getBiometrics()
     if (biometrics) {
-      setCurrent({ screen: 'home' })
+      // setCurrent({ screen: 'home' })
+      navigation.navigate('Home')
     }
   }
 
   const handleSkip = async () => {
     await setData('skipBiometrics', 'true')
-    setCurrent({ screen: 'home' })
+    // setCurrent({ screen: 'home' })
+    navigation.navigate('Home')
   }
 
   return (

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Button } from 'react-native'
 import Login from '../components/LoginScreen'
 import HomeScreen from '../components/HomeScreen'
 import BiometricsScreen from '../components/BiometricsScreen'
@@ -10,7 +10,7 @@ import dateToSeconds from '../utils/dateToSeconds'
 import apiClient from '../api/apiClient'
 import { getData, setData } from '../utils/storage'
 
-const LoginScreen: React.FC = () => {
+function LoginScreen({ navigation }) {
   const [email, setEmail] = useState<string>('')
   const [password, setPassword] = useState<string>('')
   const [showPassword, setShowPassword] = useState(false)
@@ -138,20 +138,24 @@ const LoginScreen: React.FC = () => {
     </View>
   ) : (
     (current.screen === 'login' && (
-      <Login
-        message={message}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        handleLogin={handleLogin}
-        setShowPassword={setShowPassword}
-        showPassword={showPassword}
-        password={password}
-      />
+      <>
+        <Button title="Sign Up" onPress={() => navigation.navigate('SignUpFlow')} />
+
+        <Login
+          message={message}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          handleLogin={handleLogin}
+          setShowPassword={setShowPassword}
+          showPassword={showPassword}
+          password={password}
+        />
+      </>
     )) ||
       (current.screen === 'home' && (
         <HomeScreen setMessage={setMessage} setCurrent={setCurrent} />
       )) ||
-      (current.screen === 'biometrics' && <BiometricsScreen setCurrent={setCurrent} />)
+      (current.screen === 'biometrics' && <BiometricsScreen />)
   )
 }
 

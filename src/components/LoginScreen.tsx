@@ -25,6 +25,7 @@ const Login: FC<{
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
+      <Text style={styles.textLarge}>Login</Text>
       <Text style={styles.text}>{message}</Text>
       <TextInput style={styles.input} placeholder="Email" onChangeText={(text) => setEmail(text)} />
       <TextInput
@@ -74,6 +75,11 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 14,
+    marginBottom: 20,
+    width: '80%',
+  },
+  textLarge: {
+    fontSize: 24,
     marginBottom: 20,
   },
 })

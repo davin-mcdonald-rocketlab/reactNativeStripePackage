@@ -34,18 +34,18 @@ const App: React.FC = () => {
       {!user ? (
         <Stack.Navigator>
           <Stack.Screen
-            name="SignUpFlow"
-            component={SignUpFlow}
-            options={{
-              headerTitle: 'Sign Up',
-              headerLeft: () => null,
-            }}
-          />
-          <Stack.Screen
             name="LoginFlow"
             component={LoginFlow}
             options={{
               headerTitle: 'Login',
+              headerLeft: () => null,
+            }}
+          />
+          <Stack.Screen
+            name="SignUpFlow"
+            component={SignUpFlow}
+            options={{
+              headerTitle: 'Sign Up',
               headerLeft: () => null,
             }}
           />

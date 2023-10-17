@@ -16,6 +16,9 @@ const HomeScreen: FC<NavigationProps> = ({ navigation }) => {
       <TouchableOpacity style={styles.button} onPress={handleLogout}>
         <Text style={styles.buttonText}>Logout</Text>
       </TouchableOpacity>
+      <TouchableOpacity style={styles.buttonAlt2} onPress={() => navigation.navigate('Payments')}>
+        <Text style={styles.buttonText}>Payments</Text>
+      </TouchableOpacity>
       <TouchableOpacity style={styles.buttonAlt3} onPress={() => navigation.navigate('Biometrics')}>
         <Text style={styles.buttonText}>Back to Biometrics</Text>
       </TouchableOpacity>
@@ -35,6 +38,15 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: 'red',
+    width: '80%',
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 5,
+    marginTop: 20,
+  },
+  buttonAlt2: {
+    backgroundColor: 'green',
     width: '80%',
     height: 40,
     justifyContent: 'center',

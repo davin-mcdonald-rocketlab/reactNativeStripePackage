@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, StyleSheet, Text, Button } from 'react-native'
+import { View, StyleSheet, Text } from 'react-native'
 import auth from '@react-native-firebase/auth'
 import Login from '../components/LoginScreen'
 import { NavigationProps } from '../utils/types'
@@ -28,19 +28,16 @@ function LoginScreen({ navigation }: NavigationProps) {
       <Text style={styles.text}>Loading...</Text>
     </View>
   ) : (
-    <>
-      <Button title="Sign Up" onPress={() => navigation.navigate('SignUpFlow')} />
-
-      <Login
-        message={message}
-        setEmail={setEmail}
-        setPassword={setPassword}
-        handleLogin={handleLogin}
-        setShowPassword={setShowPassword}
-        showPassword={showPassword}
-        password={password}
-      />
-    </>
+    <Login
+      message={message}
+      setEmail={setEmail}
+      setPassword={setPassword}
+      handleLogin={handleLogin}
+      setShowPassword={setShowPassword}
+      showPassword={showPassword}
+      password={password}
+      navigation={navigation}
+    />
   )
 }
 

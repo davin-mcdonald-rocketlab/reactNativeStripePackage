@@ -16,7 +16,8 @@ const SignUpForm: React.FC<{
   setPassword: (text: string) => void
   handleSignUp: () => void
   isLoading: boolean
-}> = ({ email, setEmail, password, setPassword, handleSignUp, isLoading }) => {
+  navigation: any
+}> = ({ email, setEmail, password, setPassword, handleSignUp, isLoading, navigation }) => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -38,6 +39,10 @@ const SignUpForm: React.FC<{
       />
       <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         {isLoading ? <ActivityIndicator /> : <Text style={styles.buttonText}>Sign Up</Text>}
+      </TouchableOpacity>
+      <Text style={styles.footerText}>Already have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('LoginFlow')}>
+        <Text style={styles.footerLink}>Login here</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   )
@@ -66,6 +71,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 20,
+    marginBottom: 20,
   },
   buttonText: {
     color: 'white',
@@ -74,6 +80,13 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     marginBottom: 20,
+  },
+  footerText: {
+    fontSize: 14,
+  },
+  footerLink: {
+    fontSize: 14,
+    color: 'blue',
   },
 })
 

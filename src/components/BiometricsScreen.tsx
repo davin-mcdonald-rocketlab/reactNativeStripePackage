@@ -8,6 +8,7 @@ const BiometricsScreen: FC<NavigationProps> = ({ navigation }) => {
   const handleBiometrics = async () => {
     await setData('skipBiometrics', 'false')
     const biometrics = await getBiometrics()
+    console.log('biometrics', biometrics)
     if (biometrics) {
       // setCurrent({ screen: 'home' })
       navigation.navigate('Home')

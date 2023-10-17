@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import auth from '@react-native-firebase/auth'
 import SignUpForm from '../components/SignUpScreen'
-import { Button } from 'react-native'
 import { NavigationProps } from '../utils/types'
 
 function SignUpFlow({ navigation }: NavigationProps): JSX.Element {
@@ -29,17 +28,15 @@ function SignUpFlow({ navigation }: NavigationProps): JSX.Element {
   }
 
   return (
-    <>
-      <Button title="Login" onPress={() => navigation.navigate('LoginFlow')} />
-      <SignUpForm
-        email={email}
-        setEmail={setEmail}
-        password={password}
-        setPassword={setPassword}
-        handleSignUp={handleSignUp}
-        isLoading={isLoading}
-      />
-    </>
+    <SignUpForm
+      email={email}
+      setEmail={setEmail}
+      password={password}
+      setPassword={setPassword}
+      handleSignUp={handleSignUp}
+      isLoading={isLoading}
+      navigation={navigation}
+    />
   )
 }
 

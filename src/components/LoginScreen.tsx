@@ -16,7 +16,17 @@ const Login: FC<{
   showPassword: boolean
   setShowPassword: (showPassword: boolean) => void
   password: string
-}> = ({ message, setEmail, setPassword, handleLogin, showPassword, setShowPassword, password }) => {
+  navigation: any
+}> = ({
+  message,
+  setEmail,
+  setPassword,
+  handleLogin,
+  showPassword,
+  setShowPassword,
+  password,
+  navigation,
+}) => {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
@@ -26,7 +36,7 @@ const Login: FC<{
       style={styles.container}
     >
       <Text style={styles.textLarge}>Login</Text>
-      <Text style={styles.text}>{message}</Text>
+      {message && <Text style={styles.text}>{message}</Text>}
       <TextInput style={styles.input} placeholder="Email" onChangeText={(text) => setEmail(text)} />
       <TextInput
         style={styles.input}
@@ -40,6 +50,10 @@ const Login: FC<{
       </TouchableOpacity>
       <TouchableOpacity style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+      <Text style={styles.footerText}>Don't have an account?</Text>
+      <TouchableOpacity onPress={() => navigation.navigate('SignUpFlow')}>
+        <Text style={styles.footerLink}>Sign up here</Text>
       </TouchableOpacity>
     </KeyboardAvoidingView>
   )
@@ -68,6 +82,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderRadius: 5,
     marginTop: 20,
+    marginBottom: 20,
   },
   buttonText: {
     color: 'white',
@@ -81,6 +96,13 @@ const styles = StyleSheet.create({
   textLarge: {
     fontSize: 24,
     marginBottom: 20,
+  },
+  footerText: {
+    fontSize: 14,
+  },
+  footerLink: {
+    fontSize: 14,
+    color: 'blue',
   },
 })
 

@@ -18,7 +18,8 @@ const getBiometrics = async () => {
       return false
     }
   } else if (available && biometryType === BiometryTypes.FaceID) {
-    console.log('FaceID is available!')
+    console.log('FaceID is available!', available, biometryType)
+    // const success = true
     const { success } = await rnBiometrics.simplePrompt({
       promptMessage: 'Login with FaceID',
     })

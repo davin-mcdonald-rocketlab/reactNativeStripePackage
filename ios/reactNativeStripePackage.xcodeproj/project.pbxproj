@@ -194,8 +194,6 @@
 			dependencies = (
 			);
 			name = reactNativeStripePackage;
-			packageProductDependencies = (
-			);
 			productName = reactNativeStripePackage;
 			productReference = 13B07F961A680F5B00A75B9A /* reactNativeStripePackage.app */;
 			productType = "com.apple.product-type.application";
@@ -226,8 +224,6 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
-			packageReferences = (
-			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -636,6 +632,7 @@
 					"-ld_classic",
 					"-Wl",
 					"-ld_classic",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -716,6 +713,7 @@
 					"-ld_classic",
 					"-Wl",
 					"-ld_classic",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;

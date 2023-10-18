@@ -6,7 +6,8 @@ export default function CheckoutScreen() {
   const { initPaymentSheet, presentPaymentSheet } = useStripe()
   const [loading, setLoading] = useState(false)
 
-  const API_URL = 'http://localhost:3000'
+  // use the local IP address for Android because it can't connect to localhost
+  const API_URL = 'http://10.0.0.107:3000'
 
   const fetchPaymentSheetParams = async () => {
     const response = await fetch(`${API_URL}/payment-sheet`, {
@@ -27,8 +28,7 @@ export default function CheckoutScreen() {
   // const publishableKey = STRIPE_PUBLISHABLE_KEY
 
   const initializePaymentSheet = async () => {
-    const { paymentIntent, ephemeralKey, customer, publishableKey } =
-      await fetchPaymentSheetParams()
+    const { paymentIntent, ephemeralKey, customer } = await fetchPaymentSheetParams()
 
     const { error } = await initPaymentSheet({
       merchantDisplayName: 'Rocket Lab Store',
@@ -36,7 +36,7 @@ export default function CheckoutScreen() {
       customerEphemeralKeySecret: ephemeralKey,
       paymentIntentClientSecret: paymentIntent,
       // Set `allowsDelayedPaymentMethods` to true if your business can handle payment
-      //methods that complete payment after a delay, like SEPA Debit and Sofort.
+      // methods that complete payment after a delay, like SEPA Debit and Sofort.
       allowsDelayedPaymentMethods: true,
       defaultBillingDetails: {
         name: 'Jane Doe',
@@ -61,6 +61,7 @@ export default function CheckoutScreen() {
 
   React.useEffect(() => {
     initializePaymentSheet()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
